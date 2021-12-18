@@ -3,6 +3,8 @@ var generateBtn = document.querySelector("#generate");
 var numLength = "";
 var chars = "";
 var spChars = "";
+var charLet= "";
+var charNum = "";
 
 
 
@@ -24,7 +26,6 @@ function numValidate(){
     return numLength;
 
   } else {
-  console.log('fail');
   window.alert("lets try that again..");
   numValidate();
   }
@@ -43,10 +44,55 @@ function letters() {
   return chars;  
 }
 
+function PLetter(){
+charLet = window.confirm("do you want letters?");
+
+  if (charLet){
+  charLet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+ 
+  }
+  else {
+    charLet = "";
+    
+  }
+  return charLet;
+}
+
+function PNumbers(){
+  charNum = window.confirm("do you want numbers?");
+
+  if (charNum){
+
+    charNum = "1234567890";
+
+  }
+  else{
+    charNum = "";
+    
+  }
+  return charNum;
+}
+
+function PspChars(){
+  spChars = window.confirm("Do you want to include special characters?");
+  if (spChars){
+    spChars = "~!@#$%^&*(){}|";
+  }
+  else{
+    spChars = "";
+  }
+  return spChars;
+}
+
+
 function generatePassword(){
   numValidate();
-  letters();
-  //var chars = "abcdefghijklmnopqrstuvwxyz0123456789~!@#$%^&*(){}|ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  //letters();
+  PLetter();
+  PNumbers();
+  PspChars();
+    //var chars = "abcdefghijklmnopqrstuvwxyz0123456789~!@#$%^&*(){}|ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    chars = charNum + charLet+spChars;
   for( var i = 0; i <= numLength; i++){
     var randomNum = Math.floor(Math.random()* chars.length);
     password += chars.substring(randomNum, randomNum + 1);
